@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>round</title>
+    </head>
+    <body>
+        <form id="register" method="post"> 
+            <h2>Track Your learning with Time Tracker</h2> 
+            <label for="task-name">Task Name</label><input type="text" id="task-name" name="taskname" />
+            <br> <br> 
+            <label for="task-description">Task Description</label><input type="text" id="task-description" name="taskdescription" />
+            <br> <br>
+            <input type="submit" value="Create Task" id = "subtn"/> 
+        </form>
+        <br />
+        <br />
+        <br />
+        <label id="task-status">Current Working Time</label>
+        <input type="text" id="time-duration" name="taskduration" />
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script> -->
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/js-post.js"></script>
+        </body>
+</html>
+<!-- <?php
+
+$conn = new mysqli("localhost", "root", "", "tasktracker");
+
+
+if($conn->connect_error){
+    die("connection error " . $conn->connect_error);
+}
+else{
+    if(isset($_POST['taskname']) && isset($_POST['taskdescription']) && isset($_POST['taskduration'])){
+        $status = "";
+        $taskname = $_POST['taskname'];
+        $taskdescription = $_POST['taskdescription'];
+        $taskduration = $_POST['taskduration'];
+        $sql = "INSERT INTO taskdata(taskname, taskdescription, duration)VALUES('$taskname', '$taskdescription', '$taskduration')";
+        // print_r($sql);
+        if(mysqli_query($conn, $sql)){
+
+            $sql = "SELECT duration FROM taskdata";
+            $rslt = mysqli_query($conn, $sql);
+
+            // Associative array
+            $row = mysqli_fetch_assoc($rslt);
+            $status = $row['duration'];
+
+            // Free result set
+            mysqli_free_result($rslt); 
+
+            // $status = "data submited successfully!";
+        }else{
+            $status = "data not submited successfully!";
+        }
+
+        echo json_encode($status);
+    }
+
+    if(isset($_POST['check'])){
+
+        $cratedtime = date('Y-m-d');//date('d');
+        $sql = "select * from taskdata where cratedtime like '%$cratedtime%'";
+        $rslt = mysqli_query($conn, $sql);
+        $data[0] = $rslt->num_rows;
+
+        // Associative array
+        $row = mysqli_fetch_assoc($rslt);
+        $data[1] = $row['duration'];
+
+        // Free result set
+        mysqli_free_result($rslt); 
+
+        echo json_encode($data);
+    }
+
+    if(isset($_POST['incre'])){
+        $newDuration = $_POST['updateDuration'];
+        // $time = date("g:i A", strtotime("$"));
+        $sql = "update taskdata set duration = '$newDuration'";
+        $newData = "";
+        $rslt = mysqli_query($conn, $sql);
+
+        $sql = "SELECT duration FROM taskdata";
+        $rslt = mysqli_query($conn, $sql);
+
+        // Associative array
+        $row = mysqli_fetch_assoc($rslt);
+        $newData = $row['duration'];
+
+        // Free result set
+        mysqli_free_result($rslt); 
+        
+        echo json_encode($newData);
+    }
+    
+    if(isset($_POST['remove'])){
+        // $newDuration = $_POST['updateDuration'];
+        // $time = date("g:i A", strtotime("$"));
+        $sql = "delete from taskdata";
+        $newData = "";
+        $rslt = mysqli_query($conn, $sql);
+
+        $sql = "SELECT * FROM taskdata";
+
+        $rslt = mysqli_query($conn, $sql);
+        $newData = $rslt->num_rows;
+
+
+        // Free result set
+        mysqli_free_result($rslt); 
+        
+        echo json_encode($newData);
+    }
+}
+
+?> -->

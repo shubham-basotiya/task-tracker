@@ -1,0 +1,15 @@
+{
+    "name": "simple-task-tracker",
+    "version": "1.0.0",
+    "description": "Hour Min. countdown",
+    "manifest_version": 3,
+    "author": "Shubham Sharma",
+    "action":{
+        "default_popup": "public/index.html",
+        "default_title": "Simple Task Tracker"
+    },
+    "background": {
+        "service_worker": "index.js"
+    }
+    
+}
